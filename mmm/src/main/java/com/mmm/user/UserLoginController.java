@@ -32,13 +32,16 @@ public class UserLoginController extends Controller{
 		String username = getPara("username");		
 		String password = getPara("password");
 		password = MD5(password);
-		String sql = "select * from db_user where id = 1"; 
-		List<User> user = User.dao.find(sql);		
-		if((username.equals(user.get(0).getStr("username"))) && (password.equals(user.get(0).getStr("password")))){
-			setSessionAttr("user", username);  
-			redirect("/user/");			
+		String sql = "select * from db_user where username=?";
+		List<User> user = User.dao.find(sql, username);	
+		if(!user.isEmpty()){
+			if(password.equals(user.get(0).getStr("password"))){
+				setSessionAttr("user", username);  
+				redirect("/user/");			
+			}
 		}else{		
-			redirect("/user/login/");
+			setAttr("password", "用户名或者密码错误");
+			renderFreeMarker("/user/login.html");
 		}	
 	}
 	

@@ -15,6 +15,7 @@ import com.jfinal.render.ViewType;
 import com.mmm.user.User;
 import com.mmm.user.UserIndexController;
 import com.mmm.user.UserLoginController;
+import com.mmm.user.UserRegisterController;
 
 
 
@@ -37,10 +38,10 @@ public class Config extends JFinalConfig{
 	//配置路由
 	@Override
 	public void configRoute(Routes me) {
-		//用户登录
+		//用户登录,注册找回密码等
 		me.add("/user/login", UserLoginController.class);
 		me.add("/user", UserIndexController.class);
-		
+		me.add("/user/register", UserRegisterController.class);
 	}
 	
 	
