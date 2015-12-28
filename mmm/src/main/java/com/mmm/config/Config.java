@@ -51,7 +51,7 @@ public class Config extends JFinalConfig{
 		C3p0Plugin c3p0Plugin = new C3p0Plugin("jdbc:mysql://localhost/mmm", "root", "");
 		me.add(c3p0Plugin);	
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(c3p0Plugin);
-		//arp.setShowSql(true);//设置显示查询语句
+		arp.setShowSql(true);//设置显示查询语句
 		me.add(arp);		
 		//配置表的映射
 		arp.addMapping("db_user", User.class);//用户数据库
