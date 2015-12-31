@@ -12,6 +12,12 @@ import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.mmm.admin.AddCategoryController;
+import com.mmm.admin.AdminLoginController;
+import com.mmm.admin.AdminUser;
+import com.mmm.admin.ArticleListController;
+import com.mmm.admin.CategoryListController;
+import com.mmm.admin.PasswordController;
 import com.mmm.index.Article;
 import com.mmm.index.ArticleController;
 import com.mmm.index.Category;
@@ -54,6 +60,16 @@ public class Config extends JFinalConfig{
 		me.add("/article",ArticleController.class);
 		//发表文章
 		me.add("/edit",FawenController.class);
+		//管理员登录页
+		me.add("/admin/login",AdminLoginController.class);
+		//管理员登录页
+		me.add("/admin/article",ArticleListController.class);
+		//添加栏目页
+		me.add("/admin/category",AddCategoryController.class);
+		//栏目列表
+		me.add("/admin/categorylist",CategoryListController.class);
+		//修改密码
+		me.add("/admin/password",PasswordController.class);
 	}
 	
 	
@@ -71,6 +87,7 @@ public class Config extends JFinalConfig{
 		arp.addMapping("db_article", Article.class);//文章数据库
 		arp.addMapping("db_category", Category.class);//栏目数据库
 		arp.addMapping("db_discuss", Discuss.class);//评论数据库
+		arp.addMapping("db_adminuser", AdminUser.class);//管理员数据库
 	}
 
 	//配置全局拦截器
