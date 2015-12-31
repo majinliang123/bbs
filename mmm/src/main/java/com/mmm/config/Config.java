@@ -12,6 +12,11 @@ import com.jfinal.ext.interceptor.SessionInViewInterceptor;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.render.ViewType;
+import com.mmm.index.Article;
+import com.mmm.index.ArticleController;
+import com.mmm.index.Category;
+import com.mmm.index.Discuss;
+import com.mmm.index.IndexController;
 import com.mmm.user.User;
 import com.mmm.user.UserIndexController;
 import com.mmm.user.UserLoginController;
@@ -42,6 +47,10 @@ public class Config extends JFinalConfig{
 		me.add("/user/login", UserLoginController.class);
 		me.add("/user", UserIndexController.class);
 		me.add("/user/register", UserRegisterController.class);
+		//首页
+		me.add("/index", IndexController.class);
+		//正文页
+		me.add("/article",ArticleController.class);
 	}
 	
 	
@@ -56,6 +65,9 @@ public class Config extends JFinalConfig{
 		me.add(arp);		
 		//配置表的映射
 		arp.addMapping("db_user", User.class);//用户数据库
+		arp.addMapping("db_article", Article.class);//文章数据库
+		arp.addMapping("db_category", Category.class);//栏目数据库
+		arp.addMapping("db_discuss", Discuss.class);//评论数据库
 	}
 
 	//配置全局拦截器
@@ -66,8 +78,7 @@ public class Config extends JFinalConfig{
 
 	
 	@Override
-	public void configHandler(Handlers me) {
-		
+	public void configHandler(Handlers me) {	
 		me.add(new ContextPathHandler("contextPath"));		
 	}
 }

@@ -29,7 +29,7 @@ public class UserIndexController extends Controller{
 	 */
 	@Before(UserloginInterceptor.class)//验证是否进行了登录
 	public void index(){	
-		renderFreeMarker("/user/index.html");
+		redirect("/index/");
 	}
 	
 	/**
