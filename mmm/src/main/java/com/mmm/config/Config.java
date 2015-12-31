@@ -16,6 +16,7 @@ import com.mmm.index.Article;
 import com.mmm.index.ArticleController;
 import com.mmm.index.Category;
 import com.mmm.index.Discuss;
+import com.mmm.index.FawenController;
 import com.mmm.index.IndexController;
 import com.mmm.user.User;
 import com.mmm.user.UserIndexController;
@@ -51,6 +52,8 @@ public class Config extends JFinalConfig{
 		me.add("/index", IndexController.class);
 		//正文页
 		me.add("/article",ArticleController.class);
+		//发表文章
+		me.add("/edit",FawenController.class);
 	}
 	
 	

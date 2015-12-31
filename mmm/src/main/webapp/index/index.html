@@ -39,8 +39,6 @@
             <p> ${(art.content)!''}</p>
           </ul>
           <ul class="details">
-            <li class="likes"><a href="#">10</a></li>
-            <li class="comments"><a href="#">34</a></li>
             <li class="icon-time"><a href="#">${(art.time)!''}</a></li>
           </ul>
         </div>
@@ -55,7 +53,8 @@
           <li>${(user)!''}
            </li>
           <li><a href="${contextPath}/user/login">${(login)!''}</a>
-          	  <a href="${contextPath}/user/loginOut">${(logout)!''}</a></li>
+          	  <a href="${contextPath}/user/loginOut">${(logout)!''}</a>
+          	  <a href="${contextPath}/edit">${(fawen)!''}</a></li>
         </ul>
       </div>
       <div class="tuijian">

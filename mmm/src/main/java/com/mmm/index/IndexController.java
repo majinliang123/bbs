@@ -15,10 +15,11 @@ public class IndexController extends Controller{
 		if (loginUser != null){
 			String user = getSessionAttr("user");
 			setAttr("user", user);
-			setAttr("logout", "logout");
+			setAttr("logout", "注销");
+			setAttr("fawen", "发布话题");
 		}else{
 			setAttr("user", "guist");
-			setAttr("login", "login");
+			setAttr("login", "登录");
 		}
 		String sql = "select * from db_category";
 		List<Category> category = Category.dao.find(sql);

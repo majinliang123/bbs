@@ -2,7 +2,6 @@ package com.mmm.index;
 
 import java.util.Date;
 import java.util.List;
-
 import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
 import com.mmm.interceptor.UserloginInterceptor;
@@ -22,10 +21,11 @@ public class ArticleController extends Controller{
 		if (loginUser != null){
 			String user = getSessionAttr("user");
 			setAttr("user", user);
-			setAttr("logout", "logout");
+			setAttr("logout", "注销");
+			setAttr("fawen", "发布话题");
 		}else{
 			setAttr("user", "guist");
-			setAttr("login", "login");
+			setAttr("login", "登录");
 		}
 		String sql = "select * from db_category";
 		List<Category> category = Category.dao.find(sql);
@@ -39,6 +39,9 @@ public class ArticleController extends Controller{
 		sql = "select username from db_user where id = ? ";
 		User username =  User.dao.findFirst(sql, id);
 		setAttr("edituser", username);
+		sql = "select * from db_discuss where aid = ?";
+		List<Discuss> discuss = Discuss.dao.find(sql, aid);
+		setAttr("discuss", discuss);	
 		renderFreeMarker("/index/view.html");		
 	}
 	/**
@@ -54,7 +57,6 @@ public class ArticleController extends Controller{
 		String sql = "select * from db_user where username=?";
 		User user = User.dao.findFirst(sql, username);	
 		Long id = user.getLong("id");
-		System.out.println(id);
 		dis.set("content", text);	
 		dis.set("time", now);	
 		dis.set("aid", aid);	

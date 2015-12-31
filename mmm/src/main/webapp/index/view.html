@@ -31,7 +31,7 @@ background-color: #1E90FF;
 	</#list>
     </ul>
     </ul>
-    <script src="js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
+    <script src="${contextPath}/indexassets/js/silder.js"></script><!--获取当前页导航 高亮显示标题--> 
   </nav>
 </header>
 <!--header end-->
@@ -54,6 +54,23 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
 </script> 
         <!-- Baidu Button END --> 
       </div>
+     <!-- 评论显示区 --> 
+     <div>用户评论：</div>
+      <ul > 
+      <#list  discuss as dis>
+	      <li>
+	        <div class="arrow_box">
+	          <ul >
+	            <p> ${(dis.content)!''}</p>
+	          </ul>
+	          <ul>
+	            <li class="icon-time">${(dis.time)!''}</li>
+	          </ul>
+	        </div>
+	      </li>  
+	     </#list> 
+    	</ul>
+    
 	  <div>评论：</div>
 	  <form action="${contextPath}/article/discuss/${article.aid}" method="post">
 			<div class="form">			
@@ -75,7 +92,8 @@ document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static
           <li>${(user)!''}
            </li>
           <li><a href="${contextPath}/user/login">${(login)!''}</a>
-          	  <a href="${contextPath}/user/loginOut">${(logout)!''}</a></li>
+          	  <a href="${contextPath}/user/loginOut">${(logout)!''}</a>
+          	  <a href="${contextPath}/edit">${(fawen)!''}</a></li>
         </ul>
       </div>
       <div class="tuijian">
